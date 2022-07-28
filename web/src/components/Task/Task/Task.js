@@ -84,19 +84,9 @@ const Task = ({ task }) => {
               <td>{task.body}</td>
             </tr>
             <tr>
-              <th>Description</th>
-
-              <td>{task.description}</td>
-            </tr>
-            <tr>
               <th>Completed</th>
 
               <td>{checkboxInputTag(task.completed)}</td>
-            </tr>
-            <tr>
-              <th>Checklist id</th>
-
-              <td>{task.checklistId}</td>
             </tr>
           </tbody>
         </table>

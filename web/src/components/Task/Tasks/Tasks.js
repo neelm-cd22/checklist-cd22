@@ -83,11 +83,7 @@ const TasksList = ({ tasks }) => {
 
             <th>Body</th>
 
-            <th>Description</th>
-
             <th>Completed</th>
-
-            <th>Checklist id</th>
 
             <th>&nbsp;</th>
           </tr>
@@ -100,11 +96,7 @@ const TasksList = ({ tasks }) => {
 
               <td>{truncate(task.body)}</td>
 
-              <td>{truncate(task.description)}</td>
-
               <td>{checkboxInputTag(task.completed)}</td>
-
-              <td>{truncate(task.checklistId)}</td>
 
               <td>
                 <nav className="rw-table-actions">

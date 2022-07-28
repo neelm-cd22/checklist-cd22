@@ -1,8 +1,7 @@
-import { Form, TextField, Submit, useForm } from '@redwoodjs/forms'
+import { Form, TextField, Submit } from '@redwoodjs/forms'
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags, useMutation } from '@redwoodjs/web'
-import TaskListCell, { QUERY } from 'src/components/TaskListCell'
-import TemplateListHeaderCell from 'src/components/TemplateListHeaderCell'
+import TaskListCell from 'src/components/TaskListCell'
 
 const CREATE_TASK = gql`
   mutation CreateTaskMutation($input: CreateTaskInput!) {
@@ -12,26 +11,19 @@ const CREATE_TASK = gql`
   }
 `
 
-const CreateTemplatePage = ({ id }) => {
-  const formMethods = useForm()
+const CreateTemplatePage = () => {
 
-  const [create, { loading }] = useMutation(CREATE_TASK, {
-    onCompleted: () => {
-      formMethods.reset()
-    }
-  })
+  const [create] = useMutation(CREATE_TASK)
+
   const onSubmit = (data) => {
     console.log(data)
     create({
       variables: {
         input: {
-          body: data.body,
-          description: data.description,
-          completed: false,
-          checklistId: id
+          body: data.name,
+          completed: false
         }
-      },
-      refetchQueries: [{ query: QUERY }, 'FindTaskListQuery' ]
+      }
     })
   }
 
@@ -39,21 +31,24 @@ const CreateTemplatePage = ({ id }) => {
     <>
       <MetaTags title="CreateTemplate" description="CreateTemplate page" />
 
-      <h1>This is my checklist ID: {id}</h1>
+      <h1>Create a new template</h1>
 
       <div className="template">
-        <TemplateListHeaderCell id={id}/>
+        <div className="template-header">
+          <h2 className="template-title">Building a car</h2>
+        </div>
 
         <div className="template-body">
-          <TaskListCell id={id} />
+          <TaskListCell />
 
-          <Form className="new-task-creator" onSubmit={onSubmit} formMethods={formMethods}>
-            <TextField name="body" placeholder="Enter task here" />
-            <TextField name="description" placeholder="Enter description here" />
-            <Submit disabled={loading}>+</Submit>
+          <Form className="new-task-creator" onSubmit={onSubmit}>
+            <TextField name="name" />
+            <Submit>+</Submit>
           </Form>
         </div>
       </div>
+
+      <button className="btn-submit-template" aria-label="create new task">Submit</button>
     </>
   )
 }

@@ -1,5 +1,5 @@
-import { Loading, Empty, Failure, Success } from './TemplateListHeaderCell'
-import { standard } from './TemplateListHeaderCell.mock'
+import { Loading, Empty, Failure, Success } from './ChecklistCell'
+import { standard } from './ChecklistCell.mock'
 
 export const loading = () => {
   return Loading ? <Loading /> : null
@@ -17,4 +17,4 @@ export const success = () => {
   return Success ? <Success {...standard()} /> : null
 }
 
-export default { title: 'Cells/TemplateListHeaderCell' }
+export default { title: 'Cells/ChecklistCell' }
