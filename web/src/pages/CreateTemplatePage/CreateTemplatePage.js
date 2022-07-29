@@ -97,18 +97,17 @@ const CreateTemplatePage = ({ id }) => {
     <>
       <MetaTags title="CreateTemplate" description="CreateTemplate page" />
 
-      <h1>This is my checklist ID: {id}</h1>
+      <h1>Create a new template</h1>
 
       <div className="template">
         <TemplateListHeaderCell id={id} />
 
         <div className="template-body">
-          <TaskListCell id={id} />
+          <TaskListCell />
 
-          <Form className="new-task-creator" onSubmit={onSubmit} formMethods={formMethods}>
-            <TextField name="body" placeholder="Enter task here" />
-            <TextField name="description" placeholder="Enter description here" />
-            <Submit disabled={loading}>+</Submit>
+          <Form className="new-task-creator" onSubmit={onSubmit}>
+            <TextField name="name" />
+            <Submit>+</Submit>
           </Form>
         </div>
       </div>

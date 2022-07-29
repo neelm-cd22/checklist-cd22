@@ -7,9 +7,7 @@ export const QUERY = gql`
     tasks {
       id
       body
-      description
       completed
-      checklistId
     }
   }
 `
