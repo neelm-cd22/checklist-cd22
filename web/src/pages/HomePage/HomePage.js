@@ -2,6 +2,22 @@ import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 const HomePage = () => {
+  const [create, { data }] = useMutation(CREATE_CHECKLIST, {
+    onCompleted: () => {
+      let templateId = data.createChecklist.id
+      navigate(routes.createTemplate({ id: templateId }))
+    }
+  })
+
+  const onSubmit = (inputData) => {
+    create({
+      variables: {
+        input: {
+          title: inputData.title
+        }
+      }
+    })
+  }
   return (
     <>
       <MetaTags title="Home" description="Home page" />
