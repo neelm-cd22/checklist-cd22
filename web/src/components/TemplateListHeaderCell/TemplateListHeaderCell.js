@@ -1,6 +1,6 @@
 export const QUERY = gql`
   query FindTemplateListHeaderQuery($id: Int!) {
-    templateListHeader: checklist(id: $id) {
+    templateListHeader: template(id: $id) {
       id
       title
       description

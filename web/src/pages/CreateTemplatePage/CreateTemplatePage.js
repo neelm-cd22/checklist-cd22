@@ -22,7 +22,7 @@ const CREATE_CHECKLIST = gql`
 
 const GET_TEMPLATE = gql`
 query FindTemplateQuery($id: Int!) {
-  template: checklist(id: $id) {
+  template: template(id: $id) {
     id
     title
     description
@@ -76,7 +76,7 @@ const CreateTemplatePage = ({ id }) => {
           body: formData.body,
           description: formData.description,
           completed: false,
-          checklistId: id
+          templateId: id
         }
       },
       refetchQueries: [{ query: QUERY }, 'FindTaskListQuery']
@@ -98,7 +98,7 @@ const CreateTemplatePage = ({ id }) => {
     <>
       <MetaTags title="CreateTemplate" description="CreateTemplate page" />
 
-      <h1>This is my checklist ID: {id}</h1>
+      <h1>This is my template ID: {id}</h1>
 
       <div className="template">
         <TemplateListHeaderCell id={id} />
