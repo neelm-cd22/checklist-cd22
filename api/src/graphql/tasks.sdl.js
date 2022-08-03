@@ -4,7 +4,10 @@ export const schema = gql`
     body: String!
     description: String
     completed: Boolean!
+    template: Template
     templateId: Int
+    Checklist: Checklist
+    checklistId: Int
   }
 
   type Query {
@@ -18,6 +21,7 @@ export const schema = gql`
     description: String
     completed: Boolean!
     templateId: Int
+    checklistId: Int
   }
 
   input UpdateTaskInput {
@@ -25,6 +29,7 @@ export const schema = gql`
     description: String
     completed: Boolean
     templateId: Int
+    checklistId: Int
   }
 
   type Mutation {

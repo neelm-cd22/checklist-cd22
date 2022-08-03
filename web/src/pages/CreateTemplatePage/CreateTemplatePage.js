@@ -98,7 +98,7 @@ const CreateTemplatePage = ({ id }) => {
     <>
       <MetaTags title="CreateTemplate" description="CreateTemplate page" />
 
-      <h1>This is my checklist ID: {id}</h1>
+      <h1>This is my template ID: {id}</h1>
 
       <div className="template">
         <TemplateListHeaderCell id={id} />
