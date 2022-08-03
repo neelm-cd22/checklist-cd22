@@ -29,10 +29,10 @@ export const deleteTask = ({ id }) => {
   })
 }
 
-export const tasksChecklist = ({ checklistId }) => {
+export const tasksTemplate = ({ templateId }) => {
   return db.task.findMany({
     where: {
-      checklistId: checklistId
+      templateId: templateId
     }
   })
 }

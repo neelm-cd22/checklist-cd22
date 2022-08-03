@@ -3,7 +3,7 @@ import { useMutation } from '@redwoodjs/web'
 
 export const QUERY = gql`
 query FindTaskListQuery($id: Int!) {
-  taskList: tasksChecklist(checklistId: $id) {
+  taskList: tasksTemplate(templateId: $id) {
     id
     body
     description

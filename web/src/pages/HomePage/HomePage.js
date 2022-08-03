@@ -2,18 +2,18 @@ import { Form, TextField, Submit } from '@redwoodjs/forms'
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { MetaTags, useMutation } from '@redwoodjs/web'
 
-const CREATE_CHECKLIST = gql`
-  mutation CreateChecklistMutation($input: CreateChecklistInput!) {
-    createChecklist(input: $input) {
+const CREATE_TEMPLATE = gql`
+  mutation CreateTemplateMutation($input: CreateTemplateInput!) {
+    createTemplate(input: $input) {
       id
     }
   }
 `
 
 const HomePage = () => {
-  const [create, { data }] = useMutation(CREATE_CHECKLIST, {
+  const [create, { data }] = useMutation(CREATE_TEMPLATE, {
     onCompleted: () => {
-      let templateId = data.createChecklist.id
+      let templateId = data.createTemplate.id
       navigate(routes.createTemplate({ id: templateId }))
     }
   })

@@ -9,15 +9,15 @@ generator client {
 }
 
 model Task {
-  id          Int        @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   body        String
   description String?
   completed   Boolean
-  checklist   Checklist? @relation(fields: [checklistId], references: [id])
-  checklistId Int?
+  template    Template? @relation(fields: [templateId], references: [id])
+  templateId  Int?
 }
 
-model Checklist {
+model Template {
   id          Int     @id @default(autoincrement())
   title       String
   description String?

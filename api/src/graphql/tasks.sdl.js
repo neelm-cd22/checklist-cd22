@@ -4,27 +4,27 @@ export const schema = gql`
     body: String!
     description: String
     completed: Boolean!
-    checklistId: Int
+    templateId: Int
   }
 
   type Query {
     tasks: [Task!]! @requireAuth
     task(id: Int!): Task @requireAuth
-    tasksChecklist(checklistId: Int!): [Task!]! @requireAuth
+    tasksTemplate(templateId: Int!): [Task!]! @requireAuth
   }
 
   input CreateTaskInput {
     body: String!
     description: String
     completed: Boolean!
-    checklistId: Int
+    templateId: Int
   }
 
   input UpdateTaskInput {
     body: String
     description: String
     completed: Boolean
-    checklistId: Int
+    templateId: Int
   }
 
   type Mutation {
