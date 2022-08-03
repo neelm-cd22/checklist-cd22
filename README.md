@@ -10,3 +10,6 @@ By building off of the traditional to-do list, Polycheck grants the user a great
 ## Tech Stack
 * This project uses [RedwoodJS](https://redwoodjs.com), a full-stack web framework.
 * For ease of styling, the app uses [TailwindCSS](https://tailwindcss.com), a CSS framework.
+
+## License
+This project has an [MIT License](https://github.com/atolye15/checklist/blob/master/LICENSE).
