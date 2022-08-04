@@ -1,6 +1,7 @@
 import { Form, TextField, Submit } from '@redwoodjs/forms'
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { MetaTags, useMutation } from '@redwoodjs/web'
+import HomePageTemplatesCell from 'src/components/HomePageTemplatesCell/HomePageTemplatesCell'
 
 const CREATE_TEMPLATE = gql`
   mutation CreateTemplateMutation($input: CreateTemplateInput!) {
@@ -39,6 +40,7 @@ const HomePage = () => {
 
       <div className="all-templates">
         <h2 className="all-templates-title">Templates</h2>
+        <HomePageTemplatesCell />
         <div className="template-list">
           <div className="template-card">How to wash a car</div>
           <div className="template-card">How to wash a car</div>
