@@ -1,5 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-const NavigationLayout = () => {
+const NavigationLayout = ({ children }) => {
   return (
     <>
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
@@ -39,7 +38,7 @@ const NavigationLayout = () => {
               ></path>
             </svg>
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              CheckList
+              Polycheck
             </span>
           </a>
           <div className="flex md:order-2">

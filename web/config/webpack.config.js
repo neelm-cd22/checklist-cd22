@@ -1,3 +1,5 @@
+// web/config/webpack.config.js
+
 const configDir = __dirname
 
 module.exports = (config) => {

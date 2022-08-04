@@ -10,18 +10,6 @@ const ChecklistPage = () => {
       <MetaTags title="Checklist" description="Checklist page" />
       <NavigationLayout />
       <ChecklistCard />
-      <h1>ChecklistPage</h1>
-
-      <p>
-        Find me in
-        <code>./web/src/pages/ChecklistPage/ChecklistPage.js</code>
-      </p>
-
-      <p>
-        My default route is named
-        <code>checklist</code>, link to me with `
-        <Link to={routes.checklist()}>Checklist</Link>`
-      </p>
     </>
   )
 }
