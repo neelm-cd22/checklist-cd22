@@ -19,8 +19,12 @@ export const Failure = ({ error }) => (
 export const Success = ({ templateListHeader }) => {
   return (
     <templateListHeader key={templateListHeader.id}>
-      <h1>{templateListHeader.title}</h1>
-      <p>{templateListHeader.description}</p>
+      <h5 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        {templateListHeader.title}
+      </h5>
+      <p className="mb-3 font-light text-gray-700 dark:text-gray-400">
+        {templateListHeader.description}
+      </p>
     </templateListHeader>
   )
 }
