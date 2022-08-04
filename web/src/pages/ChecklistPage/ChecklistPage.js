@@ -1,6 +1,7 @@
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
+import ChecklistCard from 'src/components/ChecklistCard/ChecklistCard'
 import NavigationLayout from 'src/layouts/NavigationLayout/NavigationLayout'
 
 const ChecklistPage = () => {
@@ -8,6 +9,7 @@ const ChecklistPage = () => {
     <>
       <MetaTags title="Checklist" description="Checklist page" />
       <NavigationLayout />
+      <ChecklistCard />
       <h1>ChecklistPage</h1>
 
       <p>
