@@ -1,5 +1,6 @@
-import { Form, Submit, HiddenField } from '@redwoodjs/forms'
+import { Form, Submit, TextField } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
+import { useState } from 'react';
 
 export const QUERY = gql`
 query FindTaskListQuery($id: Int!) {
@@ -19,6 +20,26 @@ const DELETE_TASK = gql`
   }
 `
 
+const UPDATE_TASK = gql`
+  mutation UpdateTaskMutation($taskId: Int!, $input: UpdateTaskInput!) {
+    updateTask(id: $taskId, input: $input) {
+      id
+      body
+      description
+    }
+  }
+`
+
+// const UPDATE_TODO_MUTATION = gql`
+//   mutation UpdateTodoMutation($id: Int!, $input: UpdateTodoInput!) {
+//     updateTodo(id: $id, input: $input) {
+//       id
+//       body
+//       status
+//     }
+//   }
+// `
+
 export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => <div>Empty</div>
@@ -29,6 +50,7 @@ export const Failure = ({ error }) => (
 
 export const Success = ({ taskList }) => {
   const [deleteTask, { error }] = useMutation(DELETE_TASK)
+  const [updateTask] = useMutation(UPDATE_TASK)
 
   if (error) console.log(`Submission error! ${error.message}`)
 
@@ -41,17 +63,40 @@ export const Success = ({ taskList }) => {
     })
   }
 
+  const onUpdate = (id) => {
+    updateTask({
+      variables: {
+        taskId: id,
+        input: {
+          body: "Test",
+        }
+      },
+      refetchQueries: ['FindTaskListQuery']
+    })
+  }
+
   return taskList.map((taskList) => (
     <taskList key={taskList.key}>
       <div className="task">
-        <input type="checkbox" id="task-1"></input>
+        <input type="checkbox" className="checkbox"></input>
         <label htmlFor="task-1">
-          <span className="custom-checkbox"></span>
-          {taskList.body}
-          <br />
-          {taskList.description}
-          {taskList.id}
+          <input
+            type="text"
+            className="body"
+            defaultValue={taskList.body}
+            onBlur={() => {
+              console.log("Triggered because this input lost focus");
+              onUpdate(taskList.id)
+            }}
+          />
         </label>
+
+        <Form className="temp" onBlur={(event) => {
+          console.log(event)
+        }}>
+          <TextField name="body" placeholder="ENTER HERE" />
+          <Submit>+</Submit>
+        </Form>
 
         <button
           type="button"
@@ -64,3 +109,5 @@ export const Success = ({ taskList }) => {
     </taskList>
   ))
 }
+
+// () => onUpdate(taskList.id)

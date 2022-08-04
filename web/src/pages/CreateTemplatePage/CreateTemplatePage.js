@@ -115,7 +115,7 @@ const CreateTemplatePage = ({ id }) => {
       </div>
 
       <Form className="new-checklist-form" onSubmit={onClick} >
-        <Submit>Testing create checklist</Submit>
+        <Submit>Create Checklist</Submit>
       </Form>
     </>
   )
