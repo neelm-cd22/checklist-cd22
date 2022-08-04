@@ -85,13 +85,13 @@ export const Success = ({ taskList }) => {
             className="body"
             defaultValue={taskList.body}
             onBlur={() => {
-              console.log("Triggered because this input lost focus");
-              onUpdate(taskList.id)
+              console.log("Triggered because this input lost focus"); // Debug
+              onUpdate(taskList.id) // Need to find way to send data to onUpdate function when focus is lost
             }}
           />
         </label>
 
-        <Form className="temp" onBlur={(event) => {
+        <Form className="temp" onBlur={(event) => { // This form is an experiment for sending data to the onUpdate function
           console.log(event)
         }}>
           <TextField name="body" placeholder="ENTER HERE" />
