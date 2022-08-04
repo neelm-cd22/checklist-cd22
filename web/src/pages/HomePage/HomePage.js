@@ -40,6 +40,11 @@ const HomePage = () => {
 
       <div className="all-templates">
         <h2 className="all-templates-title">Templates</h2>
+
+        <h1 class="text-3xl font-bold underline">
+          Hello world!
+        </h1>
+
         <HomePageTemplatesCell />
         <div className="template-list">
           <div className="template-card">How to wash a car</div>
