@@ -38,7 +38,7 @@ const NavigationLayout = ({ children }) => {
               ></path>
             </svg>
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              CheckList
+              Polycheck
             </span>
           </a>
           <div className="flex md:order-2">
