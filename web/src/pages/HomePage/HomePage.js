@@ -34,10 +34,10 @@ const HomePage = () => {
   return (
     <>
       <MetaTags title="Home" description="Home page" />
-      <Form className="new-template-creator" onSubmit={onSubmit} >
+      {/* <Form className="new-template-creator" onSubmit={onSubmit} >
         <TextField name="title" placeholder="Create template here" />
         <Submit>+</Submit>
-      </Form>
+      </Form> */}
       <NavigationLayout />
       <HomePageTemplatesCell />
       <HomePageChecklistsCell />
