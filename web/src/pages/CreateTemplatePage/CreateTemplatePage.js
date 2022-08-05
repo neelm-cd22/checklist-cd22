@@ -131,10 +131,12 @@ const CreateTemplatePage = ({ id }) => {
             </svg>
           </Submit>
         </Form>
+        <Form className="new-checklist-form" onSubmit={onClick} >
+          <Submit
+            className="block w-full text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2 mr-2 mb-2"
+          >Create Checklist</Submit>
+        </Form>
       </div>
-      <Form className="new-checklist-form" onSubmit={onClick} >
-        <Submit>Create Checklist</Submit>
-      </Form>
     </>
   )
 }
