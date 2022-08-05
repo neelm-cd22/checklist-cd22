@@ -101,7 +101,7 @@ export const Success = ({ taskList }) => {
                 defaultValue={taskList.body}
                 onBlur={(e) => {
                   let newBody = e.target.value
-                  onUpdateDesc(taskList.id, newBody)
+                  onUpdate(taskList.id, newBody)
                 }}
               />
               <input
@@ -110,7 +110,7 @@ export const Success = ({ taskList }) => {
                 defaultValue={taskList.description}
                 onBlur={(e) => {
                   let newDescription = e.target.value
-                  onUpdate(taskList.id, newDescription)
+                  onUpdateDesc(taskList.id, newDescription)
                 }}
               />
             </label>
