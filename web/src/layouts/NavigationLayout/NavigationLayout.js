@@ -1,6 +1,34 @@
-import { Link, routes } from '@redwoodjs/router'
+import { Link, routes, navigate } from '@redwoodjs/router'
+import { Form, TextField, Submit } from '@redwoodjs/forms'
+import { MetaTags, useMutation } from '@redwoodjs/web'
 
-const NavigationLayout = ({ children }) => {
+const CREATE_TEMPLATE = gql`
+mutation CreateTemplateMutation($input: CreateTemplateInput!) {
+  createTemplate(input: $input) {
+    id
+  }
+}
+`
+
+const NavigationLayout = () => {
+
+
+  const [create, { data }] = useMutation(CREATE_TEMPLATE, {
+    onCompleted: () => {
+      let templateId = data.createTemplate.id
+      navigate(routes.createTemplate({ id: templateId }))
+    }
+  })
+
+  const onSubmit = () => {
+    create({
+      variables: {
+        input: {
+          title: "New Template"
+        }
+      }
+    })
+  }
   return (
     <>
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
@@ -163,12 +191,12 @@ const NavigationLayout = ({ children }) => {
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                >
-                  New Checklist
-                </a>
+                <Form className="new-template-creator" onSubmit={onSubmit} >
+                  <Submit
+                    className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  >
+                    New Template</Submit>
+                </Form>
               </li>
             </ul>
           </div>

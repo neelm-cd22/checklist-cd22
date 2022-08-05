@@ -1,4 +1,4 @@
-import { Form, Submit, HiddenField } from '@redwoodjs/forms'
+import { Form, Submit, TextField } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
 
 export const QUERY = gql`
@@ -19,6 +19,16 @@ const DELETE_TASK = gql`
   }
 `
 
+const UPDATE_TASK = gql`
+  mutation UpdateTaskMutation($taskId: Int!, $input: UpdateTaskInput!) {
+    updateTask(id: $taskId, input: $input) {
+      id
+      body
+      description
+    }
+  }
+`
+
 export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => <div>Empty</div>
@@ -29,6 +39,7 @@ export const Failure = ({ error }) => (
 
 export const Success = ({ taskList }) => {
   const [deleteTask, { error }] = useMutation(DELETE_TASK)
+  const [updateTask] = useMutation(UPDATE_TASK)
 
   if (error) console.log(`Submission error! ${error.message}`)
 
@@ -36,6 +47,32 @@ export const Success = ({ taskList }) => {
     deleteTask({
       variables: {
         taskId: id
+      },
+      refetchQueries: ['FindTaskListQuery']
+    })
+  }
+
+  const onUpdate = (id, body) => {
+    console.log(body)
+    updateTask({
+      variables: {
+        taskId: id,
+        input: {
+          body: body,
+        }
+      },
+      refetchQueries: ['FindTaskListQuery']
+    })
+  }
+
+  const onUpdateDesc = (id, desc) => {
+    console.log(body)
+    updateTask({
+      variables: {
+        taskId: id,
+        input: {
+          description: desc,
+        }
       },
       refetchQueries: ['FindTaskListQuery']
     })
@@ -57,16 +94,26 @@ export const Success = ({ taskList }) => {
           <div>
             <label
               htmlFor="helper-checkbox"
-              className="font-medium text-gray-900 dark:text-gray-300"
             >
-              {taskList.body}
+              <input
+                type="text"
+                className="font-medium text-gray-900 dark:text-gray-300"
+                defaultValue={taskList.body}
+                onBlur={(e) => {
+                  let newBody = e.target.value
+                  onUpdate(taskList.id, newBody)
+                }}
+              />
+              <input
+                type="text"
+                className="text-xs font-normal text-gray-500 dark:text-gray-300"
+                defaultValue={taskList.description}
+                onBlur={(e) => {
+                  let newDescription = e.target.value
+                  onUpdateDesc(taskList.id, newDescription)
+                }}
+              />
             </label>
-            <p
-              id="helper-checkbox-text"
-              className="text-xs font-normal text-gray-500 dark:text-gray-300"
-            >
-              {taskList.description}
-            </p>
           </div>
         </div>
         <button
@@ -80,3 +127,5 @@ export const Success = ({ taskList }) => {
     </taskList>
   ))
 }
+
+// () => onUpdate(taskList.id)
