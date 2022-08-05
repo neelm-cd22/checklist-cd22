@@ -1,6 +1,6 @@
 export const QUERY = gql`
-  query FindTemplateListHeaderQuery($id: Int!) {
-    templateListHeader: template(id: $id) {
+  query FindChecklistListHeaderQuery($id: Int!) {
+    checklistListHeader: checklist(id: $id) {
       id
       title
       description
@@ -16,15 +16,15 @@ export const Failure = ({ error }) => (
   <div style={{ color: 'red' }}>Error: {error.message}</div>
 )
 
-export const Success = ({ templateListHeader }) => {
+export const Success = ({ checklistListHeader }) => {
   return (
-    <templateListHeader key={templateListHeader.id}>
+    <checklistListHeader key={checklistListHeader.id}>
       <h5 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-        {templateListHeader.title}
+        {checklistListHeader.title}
       </h5>
       <p className="mb-3 font-light text-gray-700 dark:text-gray-400">
-        {templateListHeader.description}
+        {checklistListHeader.description}
       </p>
-    </templateListHeader>
+    </checklistListHeader>
   )
 }
