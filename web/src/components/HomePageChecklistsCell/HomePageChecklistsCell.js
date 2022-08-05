@@ -1,3 +1,5 @@
+import { Link, routes } from "@redwoodjs/router"
+
 export const QUERY = gql`
   query FindChecklistQuery {
     checklists {
@@ -30,8 +32,8 @@ export const Success = ({ checklists }) => {
         {checklists.map((item) => {
           return (
             <li key={item.title} className="col-span-1">
-              <a
-                href="/"
+            <Link
+                to={routes.checklist({ id: item.id })}
                 className="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
                 <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
@@ -61,7 +63,7 @@ export const Success = ({ checklists }) => {
                     )
                   })}
                 </div>
-              </a>
+              </Link>
             </li>
           )
         })}
