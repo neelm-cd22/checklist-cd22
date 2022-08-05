@@ -37,7 +37,7 @@ export const Success = ({ templateListHeader }) => {
           title: title,
         }
       },
-      refetchQueries: ['FindTaskListQuery']
+      refetchQueries: ['FindTemplateListHeaderQuery']
     })
   }
 

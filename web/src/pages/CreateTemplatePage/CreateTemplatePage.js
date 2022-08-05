@@ -1,9 +1,11 @@
 import { Form, TextField, Submit, useForm } from '@redwoodjs/forms'
-import { Link, routes, navigate } from '@redwoodjs/router'
+import { routes, navigate } from '@redwoodjs/router'
 import { MetaTags, useMutation, useQuery } from '@redwoodjs/web'
 import TaskListCell, { QUERY } from 'src/components/TaskListCell'
 import TemplateListHeaderCell from 'src/components/TemplateListHeaderCell'
 import NavigationLayout from 'src/layouts/NavigationLayout/NavigationLayout'
+
+// READ: This is the Template page, contrary to the file name
 
 const CREATE_TASK = gql`
   mutation CreateTaskMutation($input: CreateTaskInput!) {
